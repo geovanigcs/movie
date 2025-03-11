@@ -1,101 +1,185 @@
-import Image from "next/image";
+"use client"
+
+import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
+import Header from "@/app/components/header"
+import Sidebar from "@/app/components/sidebar"
+import FeaturedContent from "@/app/components/featured-content"
+import ContentRow from "@/app/components/content-row"
+import ContinueWatching from "@/app/components/continue-watching"
+import GenreSection from "@/app/components/genre-section"
+import { useTranslation } from "@/lib/use-translation"
+import { useMovies, useTVShows, useAnimes } from "@/lib/use-api"
+import { Skeleton } from "@/app/components/ui/skeleton"
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isLoaded, setIsLoaded] = useState(false)
+  const { t } = useTranslation()
+  const { movies, loading: moviesLoading } = useMovies()
+  const { tvShows, loading: tvShowsLoading } = useTVShows()
+  const { animes, loading: animesLoading } = useAnimes()
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoaded(true), 1500)
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Show a minimal loading state
+  if (!isLoaded)
+    return (
+      <div className="flex min-h-screen bg-background">
+        <Sidebar />
+        <main className="flex-1 overflow-x-hidden pl-[248px] relative z-10">
+          <Header />
+          <div className="px-4 md:px-6 pb-8 pt-8">
+            <Skeleton className="h-[500px] rounded-xl my-6" />
+            <Skeleton className="h-8 w-64 mb-4" />
+            <div className="flex gap-4 overflow-hidden">
+              {[...Array(4)].map((_, i) => (
+                <Skeleton key={i} className="h-[375px] w-[250px] flex-shrink-0" />
+              ))}
+            </div>
+          </div>
+        </main>
+      </div>
+    )
+
+  // Format data for components
+  const popularItems = tvShows.slice(0, 5).map((show) => ({
+    id: show.id,
+    title: show.name,
+    image: show.poster_path.startsWith("/placeholder")
+      ? show.poster_path
+      : `https://image.tmdb.org/t/p/w300${show.poster_path}`,
+    rating: show.vote_average,
+    episodes: Math.floor(Math.random() * 20) + 5,
+    genre: getGenreName(show.genre_ids[0]),
+  }))
+
+  const trendingItems = movies.slice(0, 5).map((movie) => ({
+    id: movie.id,
+    title: movie.title,
+    image: movie.poster_path.startsWith("/placeholder")
+      ? movie.poster_path
+      : `https://image.tmdb.org/t/p/w300${movie.poster_path}`,
+    rating: movie.vote_average,
+    episodes: 1,
+    genre: getGenreName(movie.genre_ids[0]),
+  }))
+
+  const animeItems = animes.slice(0, 5).map((anime) => ({
+    id: anime.id,
+    title: anime.title,
+    image: anime.image,
+    rating: anime.score,
+    episodes: Math.floor(Math.random() * 24) + 12,
+    genre: anime.genres[0],
+  }))
+
+  return (
+    <div className="flex min-h-screen bg-background">
+      <Sidebar />
+      <main className="flex-1 overflow-x-hidden pl-[248px] relative z-10">
+        <Header />
+        <div className="px-4 md:px-6 pb-8">
+          {tvShowsLoading ? (
+            <Skeleton className="h-[500px] rounded-xl my-6" />
+          ) : (
+            <FeaturedContent item={tvShows[0]} type="tvshow" />
+          )}
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+            {tvShowsLoading ? (
+              <div className="my-8">
+                <Skeleton className="h-8 w-64 mb-4" />
+                <div className="flex gap-4 overflow-hidden">
+                  {[...Array(4)].map((_, i) => (
+                    <Skeleton key={i} className="h-[375px] w-[250px] flex-shrink-0" />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <ContentRow title={t("popular")} items={popularItems} />
+            )}
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-8">
+            <div className="lg:col-span-3">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                {moviesLoading ? (
+                  <div className="my-8">
+                    <Skeleton className="h-8 w-64 mb-4" />
+                    <div className="flex gap-4 overflow-hidden">
+                      {[...Array(3)].map((_, i) => (
+                        <Skeleton key={i} className="h-[375px] w-[250px] flex-shrink-0" />
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <ContentRow title={t("trending")} items={trendingItems} />
+                )}
+              </motion.div>
+            </div>
+            <div className="lg:col-span-1">
+              <ContinueWatching />
+            </div>
+          </div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
+            {animesLoading ? (
+              <div className="my-8">
+                <Skeleton className="h-8 w-64 mb-4" />
+                <div className="flex gap-4 overflow-hidden">
+                  {[...Array(4)].map((_, i) => (
+                    <Skeleton key={i} className="h-[375px] w-[250px] flex-shrink-0" />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <ContentRow title="Anime" items={animeItems} />
+            )}
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}>
+            <GenreSection />
+          </motion.div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
-  );
+  )
 }
+
+// Helper function to get genre name from ID
+function getGenreName(genreId: number): string {
+  const genres: Record<number, string> = {
+    28: "Ação",
+    12: "Aventura",
+    16: "Animação",
+    35: "Comédia",
+    80: "Crime",
+    99: "Documentário",
+    18: "Drama",
+    10751: "Família",
+    14: "Fantasia",
+    36: "História",
+    27: "Terror",
+    10402: "Música",
+    9648: "Mistério",
+    10749: "Romance",
+    878: "Ficção Científica",
+    10770: "Cinema TV",
+    53: "Thriller",
+    10752: "Guerra",
+    37: "Faroeste",
+    10759: "Ação & Aventura",
+    10762: "Kids",
+    10763: "News",
+    10764: "Reality",
+    10765: "Sci-Fi & Fantasia",
+    10766: "Soap",
+    10767: "Talk",
+    10768: "Guerra & Política",
+  }
+  return genres[genreId] || "Desconhecido"
+}
+
