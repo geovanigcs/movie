@@ -23,6 +23,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+      <link rel="icon" href="/movie1.jpeg" className="rounded-full" type="image" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <LanguageProvider defaultLanguage="pt-BR">
