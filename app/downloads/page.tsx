@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Play, Download, Trash2, CheckCircle, Clock } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
 import { useToast } from "@/lib/use-toast"
+import Image from "next/image"
 
 export default function DownloadsPage() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -19,7 +20,7 @@ export default function DownloadsPage() {
       id: 1,
       title: "The Last of Us - S01E09",
       type: "tvshow",
-      poster: "/placeholder.svg?height=200&width=350&text=TLOU",
+      poster: "/thelastofus.jpeg?height=200&width=350&text=thelastofus",
       downloadedAt: "2024-03-09T14:30:00Z",
       status: "completed",
       progress: 100,
@@ -29,7 +30,7 @@ export default function DownloadsPage() {
       id: 2,
       title: "Duna: Parte 2",
       type: "movie",
-      poster: "/placeholder.svg?height=200&width=350&text=Duna",
+      poster: "/Duna2.jpeg?height=200&width=350&text=Duna",
       downloadedAt: "2024-03-08T20:15:00Z",
       status: "completed",
       progress: 100,
@@ -168,7 +169,7 @@ export default function DownloadsPage() {
                   >
                     <div className="flex flex-col md:flex-row">
                       <div className="relative md:w-1/4 h-40">
-                        <img
+                        <Image fill
                           src={download.poster || "/placeholder.svg"}
                           alt={download.title}
                           className="w-full h-full object-cover"

@@ -95,7 +95,7 @@ export default function Sidebar() {
               animate={{ opacity: isOpen || !isMobile ? 1 : 0 }}
               onClick={() => handleNavigation("/")}
             >
-              GIGIO'S<span className="text-accent">MOVIES</span>
+              GIGIO'S <span className="text-accent">MOVIES</span>
             </motion.h1>
 
             {!isMobile && (

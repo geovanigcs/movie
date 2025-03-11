@@ -7,6 +7,8 @@ import { Progress } from "@/app/components/ui/progress"
 import { useTranslation } from "@/lib/use-translation"
 import { useState } from "react"
 import { useToast } from "@/lib/use-toast"
+import wandaVisionIcon from "@/public/wandavision.jpg"
+import Image from "next/image"
 
 export default function ContinueWatching() {
   const { t } = useTranslation()
@@ -15,7 +17,7 @@ export default function ContinueWatching() {
     {
       id: 1,
       title: "WandaVision",
-      image: "/placeholder.svg?height=150&width=250&text=WandaVision",
+      image: `${wandaVisionIcon}`,
       progress: 80,
       episode: 1,
       episodesLeft: "left",
@@ -23,7 +25,7 @@ export default function ContinueWatching() {
     {
       id: 2,
       title: "Rick and Morty",
-      image: "/placeholder.svg?height=150&width=250&text=Rick+and+Morty",
+      image: "/rickandmorty.jpg",
       progress: 45,
       episode: 3,
       episodesLeft: "left",
@@ -31,7 +33,7 @@ export default function ContinueWatching() {
     {
       id: 3,
       title: "The Last of Us",
-      image: "/placeholder.svg?height=150&width=250&text=TLOU",
+      image: "/thelastofus.jpeg",
       progress: 65,
       episode: 2,
       episodesLeft: "left",
@@ -71,7 +73,7 @@ export default function ContinueWatching() {
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >
-            <img src={item.image || "/placeholder.svg"} alt={item.title} className="w-full aspect-video object-cover" />
+            <img src={item.image || "/movie1.jpeg"} width={500} height={300} alt={item.title}  />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-3">
               <h3 className="font-medium text-sm text-white mb-1">{item.title}</h3>

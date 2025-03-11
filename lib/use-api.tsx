@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import theLastOfUsIcon from "@/public/thelastofus.jpeg"
 
 // Tipos para os dados da API
 export type Movie = {
@@ -196,8 +197,8 @@ const fallbackTVShows: TVShow[] = [
   {
     id: 1,
     name: "The Last of Us",
-    poster_path: "/placeholder.svg?height=400&width=300&text=TLOU",
-    backdrop_path: "/placeholder.svg?height=500&width=1000&text=TLOU",
+    poster_path: `${theLastOfUsIcon}?height=400&width=300&text=TLOU`,
+    backdrop_path: `${theLastOfUsIcon}?height=500&width=1000&text=TLOU`,
     vote_average: 8.7,
     overview:
       "Vinte anos após a queda da civilização, Joel é contratado para tirar Ellie de uma zona de quarentena opressiva.",

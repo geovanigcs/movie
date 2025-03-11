@@ -33,7 +33,7 @@ export default function LoadingScreen() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold text-white neon-text">
-              GIGIO'S<span className="text-teal">MOVIES</span>
+              GIGIO'S<span className="text-teal"> MOVIES</span>
             </h1>
 
             <motion.div

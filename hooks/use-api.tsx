@@ -139,8 +139,8 @@ const fallbackMovies: Movie[] = [
   {
     id: 1,
     title: "Duna: Parte 2",
-    poster_path: "/placeholder.svg?height=400&width=300&text=Duna",
-    backdrop_path: "/placeholder.svg?height=500&width=1000&text=Duna",
+    poster_path: "/Duna2.jpeg",
+    backdrop_path: "/Duna2.jpg",
     vote_average: 8.5,
     overview:
       "Paul Atreides se une a Chani e aos Fremen enquanto busca vingança contra os conspiradores que destruíram sua família.",
@@ -150,8 +150,8 @@ const fallbackMovies: Movie[] = [
   {
     id: 2,
     title: "Oppenheimer",
-    poster_path: "/placeholder.svg?height=400&width=300&text=Oppenheimer",
-    backdrop_path: "/placeholder.svg?height=500&width=1000&text=Oppenheimer",
+    poster_path: "/oppenheimer.jpeg",
+    backdrop_path: "/oppenheimer.jpeg",
     vote_average: 8.2,
     overview:
       "A história do cientista americano J. Robert Oppenheimer e seu papel no desenvolvimento da bomba atômica.",
@@ -161,8 +161,8 @@ const fallbackMovies: Movie[] = [
   {
     id: 3,
     title: "Deadpool & Wolverine",
-    poster_path: "/placeholder.svg?height=400&width=300&text=Deadpool",
-    backdrop_path: "/placeholder.svg?height=500&width=1000&text=Deadpool",
+    poster_path: "/deadewolve.jpg",
+    backdrop_path: "/deadewolve.jpg",
     vote_average: 7.9,
     overview:
       "Deadpool precisa convencer Wolverine a sair da aposentadoria para uma aventura que vai abalar o Universo Marvel.",
@@ -172,8 +172,8 @@ const fallbackMovies: Movie[] = [
   {
     id: 4,
     title: "Coringa: Delírio a Dois",
-    poster_path: "/placeholder.svg?height=400&width=300&text=Coringa",
-    backdrop_path: "/placeholder.svg?height=500&width=1000&text=Coringa",
+    poster_path: "/coringa.jpg",
+    backdrop_path: "coringa.jpg",
     vote_average: 7.5,
     overview: "Arthur Fleck está internado em Arkham quando se apaixona por uma paciente chamada Harley Quinn.",
     release_date: "2024-10-04",
@@ -182,8 +182,8 @@ const fallbackMovies: Movie[] = [
   {
     id: 5,
     title: "Gladiador 2",
-    poster_path: "/placeholder.svg?height=400&width=300&text=Gladiador",
-    backdrop_path: "/placeholder.svg?height=500&width=1000&text=Gladiador",
+    poster_path: "/gladiador.jpg",
+    backdrop_path: "/gladiador.jpg",
     vote_average: 8.0,
     overview:
       "A continuação do épico de 2000 segue a história de Lucius, sobrinho de Commodus, anos após os eventos do primeiro filme.",
@@ -196,8 +196,8 @@ const fallbackTVShows: TVShow[] = [
   {
     id: 1,
     name: "The Last of Us",
-    poster_path: "/placeholder.svg?height=400&width=300&text=TLOU",
-    backdrop_path: "/placeholder.svg?height=500&width=1000&text=TLOU",
+    poster_path: "/thelastofus.jpeg",
+    backdrop_path: "/thelastofus.jpeg",
     vote_average: 8.7,
     overview:
       "Vinte anos após a queda da civilização, Joel é contratado para tirar Ellie de uma zona de quarentena opressiva.",
@@ -207,8 +207,8 @@ const fallbackTVShows: TVShow[] = [
   {
     id: 2,
     name: "House of the Dragon",
-    poster_path: "/placeholder.svg?height=400&width=300&text=HOTD",
-    backdrop_path: "/placeholder.svg?height=500&width=1000&text=HOTD",
+    poster_path: "/houseofdragon.jpeg",
+    backdrop_path: "/houseofdragon.jpeg",
     vote_average: 8.4,
     overview: "A história da Casa Targaryen 200 anos antes dos eventos de Game of Thrones.",
     first_air_date: "2022-08-21",
@@ -217,8 +217,8 @@ const fallbackTVShows: TVShow[] = [
   {
     id: 3,
     name: "Stranger Things",
-    poster_path: "/placeholder.svg?height=400&width=300&text=ST",
-    backdrop_path: "/placeholder.svg?height=500&width=1000&text=ST",
+    poster_path: "/stranger.jpg",
+    backdrop_path: "/stranger.jpg",
     vote_average: 8.6,
     overview:
       "Quando um garoto desaparece, uma pequena cidade descobre um mistério envolvendo experimentos secretos, forças sobrenaturais e uma garotinha estranha.",
@@ -228,8 +228,8 @@ const fallbackTVShows: TVShow[] = [
   {
     id: 4,
     name: "The Crown",
-    poster_path: "/placeholder.svg?height=400&width=300&text=Crown",
-    backdrop_path: "/placeholder.svg?height=500&width=1000&text=Crown",
+    poster_path: "/thecrown.jpeg",
+    backdrop_path: "/thecrown.jpeg",
     vote_average: 8.3,
     overview: "A saga da família real britânica durante o reinado da Rainha Elizabeth II.",
     first_air_date: "2016-11-04",
@@ -238,8 +238,8 @@ const fallbackTVShows: TVShow[] = [
   {
     id: 5,
     name: "The Boys",
-    poster_path: "/placeholder.svg?height=400&width=300&text=Boys",
-    backdrop_path: "/placeholder.svg?height=500&width=1000&text=Boys",
+    poster_path: "/theboys.jpeg",
+    backdrop_path: "/theboys.jpeg",
     vote_average: 8.5,
     overview: "Um grupo de vigilantes combate super-heróis que abusam de seus superpoderes.",
     first_air_date: "2019-07-26",
@@ -251,8 +251,8 @@ const fallbackAnimes: Anime[] = [
   {
     id: 1,
     title: "Attack on Titan",
-    image: "/placeholder.svg?height=400&width=300&text=AOT",
-    cover_image: "/placeholder.svg?height=500&width=1000&text=AOT",
+    image: "/attackontitan.jpeg",
+    cover_image: "/attackontitan.jpeg",
     score: 9.0,
     description:
       "Em um mundo onde a humanidade vive dentro de cidades cercadas por enormes muralhas devido à ameaça dos Titãs, gigantes devoradores de humanos.",
@@ -262,8 +262,8 @@ const fallbackAnimes: Anime[] = [
   {
     id: 2,
     title: "Demon Slayer",
-    image: "/placeholder.svg?height=400&width=300&text=DS",
-    cover_image: "/placeholder.svg?height=500&width=1000&text=DS",
+    image: "/demonslayer.png",
+    cover_image: "/demonslayer.png",
     score: 8.7,
     description:
       "Tanjiro Kamado e seus amigos do Demon Slayer Corps acompanham Kyojuro Rengoku, o Flame Hashira, para investigar um misterioso desaparecimento de pessoas dentro de um trem.",
@@ -273,8 +273,8 @@ const fallbackAnimes: Anime[] = [
   {
     id: 3,
     title: "Jujutsu Kaisen",
-    image: "/placeholder.svg?height=400&width=300&text=JJK",
-    cover_image: "/placeholder.svg?height=500&width=1000&text=JJK",
+    image: "/jujutsu.jpg",
+    cover_image: "/jujutsu.jpg",
     score: 8.6,
     description:
       "Yuji Itadori é um estudante do ensino médio que vive em Sendai com seu avô. Ele evita regularmente a equipe de pista devido à sua aversão ao atletismo, apesar de seu talento inato para o esporte.",
@@ -284,8 +284,8 @@ const fallbackAnimes: Anime[] = [
   {
     id: 4,
     title: "One Piece",
-    image: "/placeholder.svg?height=400&width=300&text=OP",
-    cover_image: "/placeholder.svg?height=500&width=1000&text=OP",
+    image: "/onepiece.jpg",
+    cover_image: "/onepiece.jpg",
     score: 8.9,
     description:
       "Segue as aventuras de Monkey D. Luffy e sua tripulação para encontrar o maior tesouro já deixado pelo lendário Pirata, Gold Roger. O famoso tesouro conhecido como 'One Piece'.",
@@ -295,8 +295,8 @@ const fallbackAnimes: Anime[] = [
   {
     id: 5,
     title: "My Hero Academia",
-    image: "/placeholder.svg?height=400&width=300&text=MHA",
-    cover_image: "/placeholder.svg?height=500&width=1000&text=MHA",
+    image: "/boku.jpeg",
+    cover_image: "/boku.jpeg",
     score: 8.4,
     description:
       "Em um mundo onde as pessoas com superpoderes são comuns, um menino sem poderes sonha em se tornar um super-herói.",

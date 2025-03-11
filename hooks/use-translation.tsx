@@ -23,7 +23,7 @@ const translations = {
     anime: "Anime",
     search: "Pesquisar",
     watchNow: "Assistir Agora",
-    popular: "Populares no TinyMoviez",
+    popular: "Populares no Gigio's Movie",
     trending: "Em Alta",
     continue: "Continue Assistindo",
     genres: "Gêneros",

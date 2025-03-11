@@ -2,7 +2,6 @@
 
 import { useLanguage } from "@/lib/language-provider"
 
-// Translation dictionaries
 const translations = {
   "pt-BR": {
     home: "Início",

@@ -14,42 +14,34 @@ export default function GenreSection() {
     {
       id: 1,
       name: "drama",
-      image: "/placeholder.svg?height=200&width=300&text=Drama",
     },
     {
       id: 2,
       name: "comedy",
-      image: "/placeholder.svg?height=200&width=300&text=Comedy",
     },
     {
       id: 3,
       name: "action",
-      image: "/placeholder.svg?height=200&width=300&text=Action",
     },
     {
       id: 4,
       name: "horror",
-      image: "/placeholder.svg?height=200&width=300&text=Horror",
     },
     {
       id: 5,
       name: "fantasy",
-      image: "/placeholder.svg?height=200&width=300&text=Fantasy",
     },
     {
       id: 6,
       name: "superhero",
-      image: "/placeholder.svg?height=200&width=300&text=Superhero",
     },
     {
       id: 7,
       name: "romance",
-      image: "/placeholder.svg?height=200&width=300&text=Romance",
     },
     {
       id: 8,
       name: "sci-fi",
-      image: "/placeholder.svg?height=200&width=300&text=Sci-Fi",
     },
   ]
 
@@ -78,11 +70,7 @@ export default function GenreSection() {
             whileHover={{ scale: 1.05 }}
             onClick={() => handleGenreClick(genre.name)}
           >
-            <img
-              src={genre.image || "/placeholder.svg"}
-              alt={t(genre.name)}
-              className="w-full aspect-video object-cover"
-            />
+            <div className="w-full aspect-video object-cover"></div>
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
               <h3 className="text-white font-bold text-lg">{t(genre.name)}</h3>
             </div>
